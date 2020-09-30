@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Все посты блога{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg fixed-top ">
+        <a class="navbar-brand" href="{{ path('homepage') }}">Главная</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-4">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" >Здравствуй, {{app.user.email}}!</a>
+                    </li>
+                {% endif %}
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about') }}">О проекте</a>
+                </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('admin') }}">Редактирование</a><br>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Выйти</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}">Авторизация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path('app_register') }}">Регистрация</a><br>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h2>Список постов</h2><br>
+        {% for post in posts %}
+            <div class="card bg-white text-black">
+                <div class="card-body">
+                    <div> <a href="{{ path('post_show', {'id': post.id}) }}"><h2>{{ post.name }}</h2></a></div>
+                    <br>
+                    <div>Дата создания: {{ post.creadate ? post.creadate|date('Y-m-d') : '' }}</div>
+                    <br>
+                    <div>Количество комментариев: {{ post.getComments|length }}</div>
+                    <br>
+                    <div>Аннотация: {{ post.annotation }}</div>
+                    <br>
+                    <div>Просмотры: {{ post.views }}</div>
+                </div>
+            </div><br>
+        {% endfor %}
+    </div>>
+{% endblock %}

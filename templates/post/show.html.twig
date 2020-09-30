@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg fixed-top ">
+        <a class="navbar-brand" href="{{ path('homepage') }}">Главная</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-4">
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                <li class="nav-item">
+                    <a class="nav-link" >Здравствуй, {{app.user.email}}!</a>
+                </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about') }}">О проекте</a>
+                </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('admin') }}">Редактирование</a><br>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Выйти</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Авторизация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('app_register') }}">Регистрация</a><br>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+<div class="container">
+    <h2>Пост: {{ post.name }}</h2>
+    <div class = "card bg-white text-black">
+        <div class = "card-body">
+
+            <div>Дата создания: {{ post.creadate ? post.creadate|date('Y-m-d') : '' }}</div>
+            <br>
+            <div>Содержание: <br> {{ post.posttext }}</div>
+
+
+        </div>
+    </div>
+<br>
+    <h2>Комментарии:</h2>
+            {{ render(controller('App\\Controller\\CommentController::index', {'post': post.id})) }}
+
+    <div class="container">
+        <h2>Оставить комментарий</h2>
+        <div class = "card bg-warning text-black">
+            <div class = "card-body">
+                {{ render(controller('App\\Controller\\CommentController::create', {'post': post.id})) }}
+            </div>
+        </div>
+    </div>
+</div>>
+{% endblock %}

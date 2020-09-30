@@ -1,0 +1,24 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Comment index{% endblock %}
+
+{% block body %}
+
+            {% for comment in comments %}
+                <br>
+                <div class = "card bg-light text-black">
+                    <div class = "card-body">
+                        <div>Автор комментария: {{ comment.author }} </div>
+                        <br>
+                        <div>Дата создания: {{ comment.creadate ? comment.creadate|date('Y-m-d') : '' }} </div>
+                        <br>
+                        <div>{{ comment.content }} </div>
+                        <br>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    background-color: #fff491;
+}
+
+.navbar{
+    background:#291210;
+}
+.nav-link , .navbar-brand{
+    color: #f4f4f4;
+    cursor: pointer;
+}
+.nav-link{
+    margin-right: 1em !important;
+}
+.nav-link:hover{
+    background: #f4f4f4;
+    color: #291210;
+}
+.navbar-collapse{
+    justify-content: flex-end;
+}
+.navbar-toggler{
+    background:#fff !important;
+}
+
+.container{
+    margin-top: 8%;
+}
+
+.overlay{
+    position: absolute;
+    margin-top: 20%;
+    min-height: 100%;
+    min-width: 100%;
+}
+.reg{
+    margin-left: ($spacer * 6) !important;
+    margin-right: ($spacer * 20) !important;
+}
