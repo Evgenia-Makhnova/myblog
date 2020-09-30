@@ -2,25 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95819ab2-cfd7-4a18-91d4-7c78d4a8273e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/bootstrap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/cache.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/routing.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/framework.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes/dev/framework.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/comment/_delete_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/comment/new.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/_delete_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/new.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +142,7 @@
       <workItem from="1601324479794" duration="9092000" />
       <workItem from="1601373827760" duration="23674000" />
       <workItem from="1601420745933" duration="9864000" />
-      <workItem from="1601431583443" duration="22147000" />
+      <workItem from="1601431583443" duration="23661000" />
     </task>
     <servers />
   </component>
