@@ -16,6 +16,7 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
     {
         $this->passwordEncoder = $passwordEncoder;
     }
+
     public function load(ObjectManager $manager)
     {
         $user1 = new User();
