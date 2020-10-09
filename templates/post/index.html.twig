@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Все посты блога{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h2>Список постов</h2><br>
+        {% for post in posts %}
+            <div class="card bg-white text-black">
+                <div class="card-body">
+                    <div> <a href="{{ path('post_show', {'id': post.id}) }}"><h2>{{ post.name }}</h2></a></div>
+                    <br>
+                    <div>Дата создания: {{ post.createAt ? post.createAt|date('Y-m-d') : '' }}</div>
+                    <br>
+                    <div>Количество комментариев: {{ post.getComments|length }}</div>
+                    <br>
+                    <div>Аннотация: {{ post.annotation }}</div>
+                    <br>
+                    <div>Просмотры: {{ post.views }}</div>
+                </div>
+            </div><br>
+        {% endfor %}
+    </div>>
+{% endblock %}
