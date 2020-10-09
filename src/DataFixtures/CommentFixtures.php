@@ -50,6 +50,10 @@ class CommentFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($com4);
 
         $manager->flush();
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
     }
 
     public function getOrder()

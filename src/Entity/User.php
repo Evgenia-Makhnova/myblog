@@ -198,10 +198,17 @@ class User implements UserInterface
 
         return $this;
     }
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->email;
     }
+=======
+	public function __toString()
+         	{
+             return $this->email;
+         	}
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 
     public function getName(): ?string
     {
@@ -214,4 +221,8 @@ class User implements UserInterface
 
         return $this;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 }

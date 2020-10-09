@@ -12,6 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 class PostController extends AbstractController
 {
     /**
@@ -106,4 +110,8 @@ class PostController extends AbstractController
 
         return $this->redirectToRoute('post_index');
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 }

@@ -30,6 +30,12 @@ class CommentCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
+<<<<<<< HEAD
             ->disable(Action::NEW, Action::EDIT);
     }
+=======
+            ->disable( Action::NEW, Action::EDIT);
+    }
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 }

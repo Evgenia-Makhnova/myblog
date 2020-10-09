@@ -39,6 +39,10 @@ class PostFixtures extends Fixture implements OrderedFixtureInterface
         $manager->flush();
         $this->setReference('newPost1', $newPost1);
         $this->setReference('newPost2', $newPost2);
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
     }
 
     public function getOrder()

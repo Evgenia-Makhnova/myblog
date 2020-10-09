@@ -9,6 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
  */
@@ -156,8 +160,15 @@ class Post
         return $this;
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->name;
     }
+=======
+	public function __toString()
+	{
+    return $this->name;
+	}
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 }

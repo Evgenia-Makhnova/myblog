@@ -26,10 +26,17 @@ class RegistrationController extends AbstractController
 
 
 
+<<<<<<< HEAD
         if ($this->getUser() !== null) {
             //return new RedirectResponse($this->urlGenerator->generate('about'));
             return new RedirectResponse($this->generateUrl('about'));
         }
+=======
+        if ($this->getUser() !== null){
+			//return new RedirectResponse($this->urlGenerator->generate('about'));
+			return new RedirectResponse($this->generateUrl('about'));
+		}
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password

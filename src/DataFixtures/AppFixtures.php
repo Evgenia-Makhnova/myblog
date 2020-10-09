@@ -10,12 +10,21 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture implements OrderedFixtureInterface
 {
+<<<<<<< HEAD
     private $passwordEncoder;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
     }
+=======
+	private $passwordEncoder;
+
+	public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+	{
+	$this->passwordEncoder = $passwordEncoder;
+	}
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
     public function load(ObjectManager $manager)
     {
         $user1 = new User();
@@ -56,4 +65,8 @@ class AppFixtures extends Fixture implements OrderedFixtureInterface
     {
         return 0;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a39f7e51a2b71bf646c50a13e2ffe5d3f38d67ea
 }
