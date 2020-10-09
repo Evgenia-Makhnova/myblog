@@ -30,16 +30,15 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('Blog')
 
-			;
+            ;
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-		yield MenuItem::section('Important');
-		yield MenuItem::linkToCrud('Users', 'fa fa-user-circle', User::class);
+        yield MenuItem::section('Important');
+        yield MenuItem::linkToCrud('Users', 'fa fa-user-circle', User::class);
         yield MenuItem::linkToCrud('Posts', 'fa fa-newspaper-o', Post::class);
-		yield MenuItem::linkToCrud('Comments', 'fa fa-comments', Comment::class);
-        // yield MenuItem::linkToCrud('The Label', 'icon class', EntityClass::class);
+        yield MenuItem::linkToCrud('Comments', 'fa fa-comments', Comment::class);
     }
 }

@@ -22,7 +22,6 @@ class CommentFixtures extends Fixture implements OrderedFixtureInterface
         $com1->setContent('Первый комментарий');
         $com1->setPost($newPost1);
         $com1->setUser($user2);
-        //$newPost1->addComments($com1);
         $manager->persist($com1);
 
         $com2 = new Comment();
@@ -30,7 +29,6 @@ class CommentFixtures extends Fixture implements OrderedFixtureInterface
         $com2->setContent('Второй комментарий');
         $com2->setPost($newPost1);
         $com2->setUser($user3);
-        //$newPost1->addComments($com2);
         $manager->persist($com2);
 
         $com3 = new Comment();
@@ -38,7 +36,6 @@ class CommentFixtures extends Fixture implements OrderedFixtureInterface
         $com3->setContent('Третий комментарий');
         $com3->setPost($newPost1);
         $com3->setUser($user4);
-        //$newPost1->addComments($com2);
         $manager->persist($com3);
 
         $com4 = new Comment();
@@ -46,11 +43,9 @@ class CommentFixtures extends Fixture implements OrderedFixtureInterface
         $com4->setContent('Четвертый комментарий');
         $com4->setPost($newPost2);
         $com4->setUser($user4);
-        //$newPost1->addComments($com2);
         $manager->persist($com4);
 
         $manager->flush();
-
     }
 
     public function getOrder()

@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class PostController extends AbstractController
 {
     /**
@@ -59,8 +58,6 @@ class PostController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
-
-            //return $this->redirectToRoute('post_show', ['id'  => $post->getID()]);
         }
 
         return $this->render('post/show.html.twig', [
@@ -107,5 +104,4 @@ class PostController extends AbstractController
 
         return $this->redirectToRoute('post_index');
     }
-
 }

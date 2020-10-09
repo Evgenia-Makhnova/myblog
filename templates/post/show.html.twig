@@ -31,8 +31,6 @@
             </div>
         {% endfor %}
 
-            {#{{ render(controller('App\\Controller\\CommentController::index', {'post': post.id})) }}#}
-
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     <div class="container">
         <h2>Оставить комментарий</h2>

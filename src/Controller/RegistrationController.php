@@ -26,10 +26,9 @@ class RegistrationController extends AbstractController
 
 
 
-        if ($this->getUser() !== null){
-			//return new RedirectResponse($this->urlGenerator->generate('about'));
-			return new RedirectResponse($this->generateUrl('about'));
-		}
+        if ($this->getUser() !== null) {
+            return new RedirectResponse($this->generateUrl('about'));
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -43,7 +42,6 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,

@@ -29,6 +29,4 @@ class PostCrudController extends AbstractCrudController
 
         ];
     }
-
-
 }
