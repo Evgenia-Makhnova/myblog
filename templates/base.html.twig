@@ -8,6 +8,47 @@
         {% endblock %}
     </head>
     <body>
+    <nav class="navbar navbar-expand-lg fixed-top ">
+        <a class="navbar-brand" href="{{ path('homepage') }}">Главная</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-4">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" >Здравствуй, {{app.user.name}}!</a>
+                    </li>
+                {% endif %}
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about') }}">О проекте</a>
+                </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('admin') }}">Редактирование</a><br>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Выйти</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Авторизация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('app_register') }}">Регистрация</a><br>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}

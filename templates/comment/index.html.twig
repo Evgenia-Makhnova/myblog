@@ -5,20 +5,18 @@
 
 {% block body %}
 
-            {% for comment in comments %}
+            {#{% for comment in comments %}
                 <br>
                 <div class = "card bg-light text-black">
                     <div class = "card-body">
-                        <div>Автор комментария: {{ comment.author }} </div>
+                        <div>Автор комментария: {{comment.user.name}} </div>
                         <br>
-                        <div>Дата создания: {{ comment.creadate ? comment.creadate|date('Y-m-d') : '' }} </div>
+                        <div>Дата создания: {{ comment.createAt ? comment.createAt|date('Y-m-d') : '' }} </div>
                         <br>
                         <div>{{ comment.content }} </div>
                         <br>
                     </div>
                 </div>
-            {% endfor %}
-
-
+            {% endfor %}#}
 
 {% endblock %}

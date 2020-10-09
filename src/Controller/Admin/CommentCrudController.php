@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Comment;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -19,10 +21,16 @@ class CommentCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('author'),
+            IdField::new('id')->hideOnForm(),
+            TextField::new('user.name'),
             TextEditorField::new('content'),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable( Action::NEW, Action::EDIT);
     }
 
 }

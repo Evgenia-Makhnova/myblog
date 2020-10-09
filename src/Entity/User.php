@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="`user`")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
@@ -50,6 +51,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
 
     public function __construct()
     {
@@ -147,7 +153,6 @@ class User implements UserInterface
     {
         if (!$this->posts->contains($post)) {
             $this->posts[] = $post;
-            $post->setAuthor($this);
         }
 
         return $this;
@@ -158,9 +163,6 @@ class User implements UserInterface
         if ($this->posts->contains($post)) {
             $this->posts->removeElement($post);
             // set the owning side to null (unless already changed)
-            if ($post->getAuthor() === $this) {
-                $post->setAuthor(null);
-            }
         }
 
         return $this;
@@ -197,7 +199,20 @@ class User implements UserInterface
         return $this;
     }
 	public function __toString()
-	{
-    return $this->email;
-	}
+         	{
+             return $this->email;
+         	}
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
 }

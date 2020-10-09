@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,42 +23,54 @@ class PostController extends AbstractController
         return $this->render('post/index.html.twig', [
             'posts' => $postRepository->findBy(
                 array(),
-                array('creadate' => 'ASC')
+                array('createAt' => 'ASC')
             ),
         ]);
     }
 
+
     /**
-     * @Route("post/new", name="post_new", methods={"GET","POST"})
+     * @Route("post/{id}", name="post_show", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function show(Request $request, Post $post, CommentRepository $commentRepository): Response
     {
-        $post = new Post();
-        $form = $this->createForm(PostType::class, $post);
+        $em = $this->getDoctrine()->getManager();
+        $views = $post->getViews();
+        $post->setViews($views + 1);
+        $em->flush();
+
+        $comment = new Comment();
+
+        $form = $this->createForm(PostType::class, $comment, [
+            'method' => 'POST',
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $comment = $form ->getData();
+            $comment ->setCreateAt(new \DateTime('now'));
+            $comment ->setPost($post);
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+            $user = $this->getUser();
+            $comment ->setUser($user);
+
+
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($post);
+            $entityManager->persist($comment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('post_index');
+            //return $this->redirectToRoute('post_show', ['id'  => $post->getID()]);
         }
-
-        return $this->render('post/new.html.twig', [
-            'post' => $post,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("post/{id}", name="post_show", methods={"GET"})
-     */
-    public function show(Post $post): Response
-    {
 
         return $this->render('post/show.html.twig', [
             'post' => $post,
+            'comment' => $comment,
+            'form' => $form->createView(),
+            'comments' => $commentRepository->findBy(
+                array('post' => ['id'  => $post->getID()]),
+                array('createAt' => 'ASC')
+            ),
         ]);
     }
 

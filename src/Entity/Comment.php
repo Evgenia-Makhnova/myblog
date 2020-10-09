@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -16,11 +17,6 @@ class Comment
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $author;
 
     /**
      * @ORM\Column(type="text")
@@ -40,27 +36,13 @@ class Comment
     private $user;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column( type="datetime")
      */
-    private $creadate;
-
-    
+    private $createAt;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
     }
 
     public function getContent(): ?string
@@ -98,19 +80,15 @@ class Comment
 
         return $this;
     }
-	public function __toString()
-         	{
-             return $this->author;
-         	}
 
-    public function getCreadate(): ?\DateTimeInterface
+    public function getCreateAt(): ?\DateTimeInterface
     {
-        return $this->creadate;
+        return $this->createAt;
     }
 
-    public function setCreadate(\DateTimeInterface $creadate): self
+    public function setCreateAt(\DateTimeInterface $createAt): self
     {
-        $this->creadate = $creadate;
+        $this->createAt = $createAt;
 
         return $this;
     }

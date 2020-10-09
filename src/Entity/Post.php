@@ -6,12 +6,17 @@ use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
  */
 class Post
 {
+    //use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -25,14 +30,15 @@ class Post
     private $name;
 
     /**
-     * @ORM\Column(type="date")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $creadate;
+    private $createAt;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $posttext;
+    private $text;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -49,15 +55,10 @@ class Post
      */
     private $comments;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $author;
-
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->setCreateAt(new \DateTime());
     }
 
     public function getId(): ?int
@@ -77,26 +78,26 @@ class Post
         return $this;
     }
 
-    public function getCreadate(): ?\DateTimeInterface
+    public function getCreateAt(): ?\DateTimeInterface
     {
-        return $this->creadate;
+        return $this->createAt;
     }
 
-    public function setCreadate(\DateTimeInterface $creadate): self
+    public function setCreateAt(\DateTimeInterface $createAt): self
     {
-        $this->creadate = $creadate;
+        $this->createAt = $createAt;
 
         return $this;
     }
 
-    public function getPosttext(): ?string
+    public function getText(): ?string
     {
-        return $this->posttext;
+        return $this->text;
     }
 
-    public function setPosttext(string $posttext): self
+    public function setText(string $text): self
     {
-        $this->posttext = $posttext;
+        $this->text = $text;
 
         return $this;
     }
@@ -156,17 +157,6 @@ class Post
         return $this;
     }
 
-    public function getAuthor(): ?User
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?User $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
 	public function __toString()
 	{
     return $this->name;
